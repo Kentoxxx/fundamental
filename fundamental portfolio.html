@@ -216,13 +216,16 @@
             const currentImage = images[currentIndex];
             const currentDescription = descriptionElement;
 
+            // Fade out current image and description
             currentImage.classList.add('fade-out');
             currentDescription.classList.add('fade-out');
 
             setTimeout(() => {
+                // Remove active class and fade-out after 1 second
                 currentImage.classList.remove('active', 'fade-out');
                 currentDescription.classList.remove('fade-out');
                 
+                // Set next image as active and update description
                 const nextImage = images[newIndex];
                 nextImage.classList.add('active');
                 descriptionElement.textContent = descriptions[newIndex];

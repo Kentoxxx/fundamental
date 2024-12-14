@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Razelle Kent Calvario</title>
     <style>
+        /* Existing styles retained and updated */
+        .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: fadeIn 2s ease-in-out; /* Matches the heading animation */
+}
+
+
         body {
             margin: 0;
             font-family: "Times New Roman", serif;
@@ -15,7 +25,6 @@
 
         header {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -31,14 +40,6 @@
             background-color: black;
             color: white;
             border-radius: 5px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
             animation: fadeIn 2s ease-in-out;
         }
 
@@ -91,6 +92,11 @@
             display: block;
         }
 
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
         .arrow {
             cursor: pointer;
             font-size: 2em;
@@ -116,6 +122,10 @@
             max-width: 300px;
             text-align: left;
             transition: opacity 1s ease-in-out;
+        }
+
+        .description.fade-out {
+            opacity: 0;
         }
 
         @keyframes fadeIn {
@@ -150,7 +160,7 @@
 <body>
     <header>
         <h1>Razelle Kent Calvario</h1>
-        <img src="images/profile.jpg" alt="Razelle Kent Calvario's Picture" class="profile-pic">
+        <img src="C:\Users\Rommel Calvario\OneDrive\Desktop\PRACTICE\images.jpg\profile.jpg" alt="Razelle Kent Calvario's Picture" class="profile-pic">
     </header>    
     <section>
         <h2>About Me</h2>
@@ -164,24 +174,22 @@
         <div class="carousel">
             <span class="arrow" id="prev">&#8592;</span>
             <div class="carousel-container">
+                <img src="C:\Users\Rommel Calvario\OneDrive\Desktop\PRACTICE\images\bussiness card.jpg" alt="Image 1" class="active">
+                <img src="C:\Users\Rommel Calvario\OneDrive\Desktop\PRACTICE\images\emoji.jpg" alt="Image 1" class="active">
+                <img src="C:\Users\Rommel Calvario\OneDrive\Desktop\PRACTICE\images\image compreesed.jpg" alt="Image 1" class="active">
                 <img src="images/emoji.jpg" alt="Image 1" class="active">
-                <img src="images/business_card.jpg" alt="Image 2">
-                <img src="images/image_compressed.jpg" alt="Image 3">
-                <img src="images/poem.jpg" alt="Image 4">
-                <img src="images/pokemon.jpg" alt="Image 5">
-                <div class="description" id="image-description">This is My favorite activity of all time LOL</div>
-            </div>
+                <img src="images/emoji.jpg" alt="Image 1" class="active">
+                <div class="description" id="image-description">This is My favorite activity of all time LOL </div>
+            
             <span class="arrow" id="next">&#8594;</span>
         </div>
     </section>
-    
     <section>
         <h2>Reflection</h2>
         <p>This section is dedicated to my thoughts and reflections on my learning journey. I believe that reflecting on my experiences helps me grow and improve my skills.</p>
         <p>Throughout my studies, I have encountered various challenges that have tested my abilities. However, each challenge has also provided me with valuable lessons that I will carry forward.</p>
         <p>I am committed to continuous learning and self-improvement, and I look forward to applying what I have learned in future projects.</p>
     </section>
-    
     <section class="contact-section">
         <h2>Contact</h2>
         <p>Number: 09910083930</p>
@@ -193,12 +201,11 @@
         const images = document.querySelectorAll('.carousel img');
         const descriptions = [
             "This is My favorite activity of all time LOL",
-            "This is Dora, I put a lot of love into this activity because it's Dora :)",
-            "This is the Compressed and Uncompressed Image Activity. I love your name; it's 10/10 anime.",
-            "This activity is a poem. I love this poem I made; it's inspired by a game called Ghost of Tsushima. I love the game; its story is sad and wholesome.",
-            "AND THIS is my 2nd FAVORITE ACTIVITY! Like bro, Ditto is an amazing Pokémon who can shapeshift into anything >:)"
+            "This is dora put alot of love of these activity because its dora :)",
+            "This is Compressed and Uncompressed Image Activity i love your name its 10/10 anime",
+            "This activity is a poem i love this poem i made my poem is inpired from a game called Ghost of tsushima i love the game its also history story is sad and wholesome",
+            "AND THIS is 2nd FAVORITE ACTIVITY like bro Ditto is amazing pokemon who can shapeshift to anything >:)",
         ];
-        
         const descriptionElement = document.getElementById('image-description');
         const prev = document.getElementById('prev');
         const next = document.getElementById('next');

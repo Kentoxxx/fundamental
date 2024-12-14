@@ -5,7 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Razelle Kent Calvario</title>
     <style>
-        /* Your existing styles */
+        /* Existing styles retained and updated */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: fadeIn 2s ease-in-out; /* Matches the heading animation */
+        }
+
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            color: black;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s ease-in-out forwards;
+        }
+
+        section p {
+            margin: 10px 0;
+        }
+
+        .contact-section {
+            background-color: black;
+            color: white;
+            padding: 50px;
+            margin-top: 20px;
+        }
+
+        .carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: auto;
+            max-height: 100%;
+            display: none;
+            border: 2px solid black;
+            border-radius: 10px;
+            transition: opacity 1s ease-in-out;
+            object-fit: cover;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .arrow {
+            cursor: pointer;
+            font-size: 2em;
+            user-select: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        .arrow#prev {
+            left: 10px;
+        }
+
+        .arrow#next {
+            right: 10px;
+        }
+
+        .description {
+            margin-left: 20px;
+            font-size: 1.2em;
+            color: black;
+            max-width: 300px;
+            text-align: left;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .description.fade-out {
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        section:nth-child(3) {
+            animation-delay: 1s;
+        }
     </style>
 </head>
 <body>
@@ -19,6 +167,7 @@
         <p>Although my skills may not be as good as you might think, I can learn from my mistakes. I just need some time to adjust and adapt to the tasks given to me.</p>
         <p>Right below is my project from our school. Please check them out ^^ Thank you!</p>
     </section>
+
     <section>
         <h2>My Gallery</h2>
         <div class="carousel">
@@ -29,23 +178,67 @@
                 <img src="images/image_compressed.jpg" alt="Image 3">
                 <img src="images/poem.jpg" alt="Image 4">
                 <img src="images/pokemon.jpg" alt="Image 5">
+                <div class="description" id="image-description">This is my favorite activity of all time LOL.</div>
             </div>
             <span class="arrow" id="next">&#8594;</span>
-            <div class="description" id="image-description">This is my favorite activity of all time LOL.</div>
         </div>
     </section>
+
     <section>
         <h2>Reflection</h2>
-        <p>This section is dedicated to my thoughts and reflections on my learning journey...</p>
+        <p>This section is dedicated to my thoughts and reflections on my learning journey. I believe that reflecting on my experiences helps me grow and improve my skills.</p>
+        <p>Throughout my studies, I have encountered various challenges that have tested my abilities. However, each challenge has also provided me with valuable lessons that I will carry forward.</p>
+        <p>I am committed to continuous learning and self-improvement, and I look forward to applying what I have learned in future projects.</p>
     </section>
+
     <section class="contact-section">
         <h2>Contact</h2>
         <p>Number: 09910083930</p>
         <p>Social: Quackk Y Quack</p>
         <p>Gmail: calvariorazellekent@gmail.com</p>
     </section>
+
     <script>
-        // Your JavaScript code remains unchanged
+        const images = document.querySelectorAll('.carousel img');
+        const descriptions = [
+            "This is my favorite activity of all time LOL.",
+            "This is Dora, put a lot of love into these activities because it's Dora :)",
+            "This is a compressed and uncompressed image activity. I love your name—it's 10/10 anime.",
+            "This activity is a poem I love. My poem is inspired by a game called Ghost of Tsushima. I love the game. Its story is sad and wholesome.",
+            "AND THIS is my 2nd FAVORITE ACTIVITY. Ditto is amazing! Pokémon that can shapeshift into anything >:)"
+        ];
+        const descriptionElement = document.getElementById('image-description');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let currentIndex = 0;
+
+        function updateCarousel(newIndex) {
+            const currentImage = images[currentIndex];
+            const currentDescription = descriptionElement;
+
+            currentImage.classList.add('fade-out');
+            currentDescription.classList.add('fade-out');
+
+            setTimeout(() => {
+                currentImage.classList.remove('active', 'fade-out');
+                currentDescription.classList.remove('fade-out');
+                
+                const nextImage = images[newIndex];
+                nextImage.classList.add('active');
+                descriptionElement.textContent = descriptions[newIndex];
+                currentIndex = newIndex;
+            }, 1000); // Duration of fade-out
+        }
+
+        prev.addEventListener('click', () => {
+            const newIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel(newIndex);
+        });
+
+        next.addEventListener('click', () => {
+            const newIndex = (currentIndex + 1) % images.length;
+            updateCarousel(newIndex);
+        });
     </script>
 </body>
 </html>
